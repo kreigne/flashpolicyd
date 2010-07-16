@@ -385,6 +385,8 @@ def run_server
       STDOUT.reopen('/dev/null', 'a')
       STDERR.reopen('/dev/null', 'a')
 
+      trap("TERM") {
+        @logger.debug("Caught TERM signal")
         exit
       }
       yield
